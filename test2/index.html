@@ -4,7 +4,38 @@
 		<meta charset="utf-8" />
 		<title>test angular</title>
 	</head>
-	<body>
+	<body ng-app>
 		
+		<div ng-controller="HelloController">
+            <p>{{greeting.text}},Word</p>
+            <p>{{test.text}}</p>
+        </div>
+        
+        <div  ng-controller="c2">
+        	<form action="">
+        		<input type="text" ng-change="computeNeed()" ng-model="nums.num"/> 
+        		 Recommendation:{{needed}}
+        	</form>
+        	
+        </div>
+		
+		<script type="text/javascript" src="js/angular.min.js" ></script>
+	
+		<script type="text/javascript">
+		 
+		      function HelloController( $scope ){
+		           $scope.greeting = { text: "Hello" };
+		           $scope.test = { text: "Hello2" };
+		           
+		      }
+		       
+		      function c2( $scope ){
+		         $scope.nums ={num:0};
+		           var computeNeed = function(){
+                   $scope.needed=$scope.nums.num * 10;
+                } 
+                 $scope.$watch("nums.num",computeNeed)
+		      }
+		 </script>
 	</body>
 </html>
